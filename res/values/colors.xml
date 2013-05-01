@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ 	<color name="tabMedium">#2B2B2B</color>
+	<color name="tabDark">#000000</color>
+	<color name="tabTransparent">#10ffffff</color>   	
+	<color name="icecream">#e3e3e3</color>
+	<color name="greensp">#3D7600</color>
+	<color name="greysp">#636062</color>
+	<color name="blacksp">#565656</color>
+	<color name="transp">#FF000000</color>
+	<color name="transp2">#88202020</color>
+	<color name="greysp2">#5c5c5c</color>
+	<color name="whitesp">#ffffff</color>
+	<color name="redsp">#e02c23</color>
+</resources>
