@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_mapa" >
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:background="@drawable/fondoimhere" >
+
+        <ImageView
+            android:id="@+id/boton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="26dp"
+            android:layout_marginTop="18dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:src="@drawable/boton_geo" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/lyTwo"
         android:layout_width="match_parent"
-        android:layout_height="295dp"
-        android:layout_below="@+id/lyOne"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="vertical" >
 
         <fragment
@@ -19,43 +37,23 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/lyOne"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/lyTwo" >
+        android:layout_weight="3"
+        android:background="@drawable/fondolast" >
 
         <ImageView
             android:id="@+id/boton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
             android:layout_marginTop="18dp"
             android:layout_marginRight="26dp"
             android:adjustViewBounds="true"
             android:clickable="true"
-            android:src="@drawable/boton_geo" />
-
+            android:src="@drawable/boton_parkin" />
+     
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/lyOne"
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
-
-        <ImageView
-            android:id="@+id/boton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="18dp"
-            android:layout_marginRight="26dp"
-            android:adjustViewBounds="true"
-            android:clickable="true"
-            android:src="@drawable/boton_geo" />
-
-    </RelativeLayout>
-
-</RelativeLayout>
+</LinearLayout>

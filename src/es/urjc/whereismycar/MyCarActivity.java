@@ -83,15 +83,11 @@ public class MyCarActivity extends FragmentActivity implements
 			Utils.CrearToast(act, getString(R.string.errorConexion));
 			this.finish();
 		} else {
-			// carLatitude= Preferences.getLatitude(this);
-			// carLongitude=Preferences.getLongitude(this);
-			carLatitude = 40.342194f;
-			carLongitude = -3.714734f;
+			carLatitude = Preferences.getLatitude(this);
+			carLongitude = Preferences.getLongitude(this);
+		
 			lm = (LocationManager) this
 					.getSystemService(Context.LOCATION_SERVICE);
-
-			// itemizedoverlayMyPosition = new MyOverlay(drawable2, this);
-			// itemizedoverlay = new MyOverlay(drawable, this);
 
 			SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager()
 					.findFragmentById(R.id.map);
@@ -107,39 +103,6 @@ public class MyCarActivity extends FragmentActivity implements
 			drawMap();
 		}
 	}
-
-//	private class MyOnClickListener implements OnClickListener {
-//
-//		public void onClick(View v) {
-//
-//			switch (v.getId()) {
-//			case R.id.boton:
-//				setCurrentLocation();
-//				drawMap();
-//
-//				break;
-//			case R.id.boton2:
-//				DbHandler db = new DbHandler(act);
-//				ArrayList<LatLng> parking = db.getLastParking(CurrentLatitude,
-//						CurrentLongitude, 5);
-//
-//				for (LatLng p : parking) {
-//					Marker marke2r = mapView.addMarker(new MarkerOptions()
-//							.position(p)
-//							.title("San Francisco")
-//							.snippet("Population: 776733")
-//							.icon(BitmapDescriptorFactory
-//									.fromResource(R.drawable.marker2)));
-//				}
-//
-//				break;
-//			default:
-//				break;
-//			}
-//
-//		}
-//
-//	}
 
 	/**
 	 * Obtiene tu posici√≥n actual
@@ -160,8 +123,7 @@ public class MyCarActivity extends FragmentActivity implements
 				FirstLongitude = lm.getLastKnownLocation(
 						LocationManager.GPS_PROVIDER).getLongitude();
 			} else {
-				FirstLatitude = carLatitude;
-				FirstLongitude = carLongitude;
+				
 				Toast.makeText(getApplicationContext(),
 						getString(R.string.mapNopos), Toast.LENGTH_LONG).show();
 
@@ -254,20 +216,24 @@ public class MyCarActivity extends FragmentActivity implements
 
 				double resultlo = (carLongitude + CurrentLongitude) / 2;
 
+				// LatLng pos = new LatLng((double)
+				// Preferences.getLatitude(act),
+				// (double) Preferences.getLongitude(act));
+
 				LatLng pos = new LatLng((double) Preferences.getLatitude(act),
-						(double) Preferences.getLongitude(act));
+				(double) Preferences.getLongitude(act));
+				
+				
 
 				Marker marker = mapView.addMarker(new MarkerOptions()
 						.position(new LatLng(carLatitude, carLongitude))
-						.title("San Francisco")
-						.snippet("Population: 776733")
+						.title("Su vehículo")
 						.icon(BitmapDescriptorFactory
 								.fromResource(R.drawable.marker2)));
 
 				Marker marke2r = mapView.addMarker(new MarkerOptions()
 						.position(pos)
-						.title("San Francisco")
-						.snippet("Population: 776733")
+						.title("Su posición")
 						.icon(BitmapDescriptorFactory
 								.fromResource(R.drawable.marker2)));
 
@@ -351,8 +317,7 @@ public class MyCarActivity extends FragmentActivity implements
 			for (LatLng p : parking) {
 				Marker marke2r = mapView.addMarker(new MarkerOptions()
 						.position(p)
-						.title("San Francisco")
-						.snippet("Population: 776733")
+						.title("Su vehículo")
 						.icon(BitmapDescriptorFactory
 								.fromResource(R.drawable.marker2)));
 			}

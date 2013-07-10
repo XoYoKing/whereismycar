@@ -102,9 +102,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		Preferences.setLongitude(this, (float) CurrentLongitude);
 
 		db.addPosition(CurrentLatitude, CurrentLongitude);
-		db.addPosition(40.34486, -3.712867);
-		db.addPosition(40.346086, -3.709069);
-		db.addPosition(40.324954, -3.515139);
 
 		Toast.makeText(getApplicationContext(), getString(R.string.posSave),
 				Toast.LENGTH_LONG).show();
@@ -135,66 +132,5 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	}
 
-	BluetoothHeadset mBluetoothHeadset;
-	private BluetoothProfile.ServiceListener mProfileListener = new BluetoothProfile.ServiceListener() {
-		public void onServiceConnected(int profile, BluetoothProfile proxy) {
-			if (profile == BluetoothProfile.HEADSET) {
-				mBluetoothHeadset = (BluetoothHeadset) proxy;
-				Toast.makeText(getApplicationContext(),
-						getString(R.string.btConected), Toast.LENGTH_LONG)
-						.show();
-
-				if (mBluetoothHeadset != null) {
-					List<BluetoothDevice> devices = mBluetoothHeadset
-							.getConnectedDevices();
-					for (BluetoothDevice dev : devices) {
-					
-						if (mBluetoothHeadset.isAudioConnected(dev)) {
-							Toast.makeText(getApplicationContext(),
-									getString(R.string.btConected),
-									Toast.LENGTH_LONG).show();
-						}
-
-					}
-				}
-			}
-		}
-
-		public void onServiceDisconnected(int profile) {
-			if (profile == BluetoothProfile.HEADSET) {
-				mBluetoothHeadset = null;
-				Toast.makeText(getApplicationContext(),
-						getString(R.string.btDisConected), Toast.LENGTH_LONG)
-						.show();
-
-				setCurrentLocation();
-				Intent intent = new Intent(actv, MyCarActivity.class);
-				startActivity(intent);
-
-			}
-		}
-	};
-
-	// Get the default adapter
-
-	private void activateBl() {
-		BluetoothAdapter mBluetoothAdapter = BluetoothAdapter
-				.getDefaultAdapter();
-			mBluetoothAdapter.getProfileProxy(this, mProfileListener,
-				BluetoothProfile.HEADSET);
-		if (mBluetoothHeadset != null) {
-			List<BluetoothDevice> devices = mBluetoothHeadset
-					.getConnectedDevices();
-			for (BluetoothDevice dev : devices) {
-				if (mBluetoothHeadset.isAudioConnected(dev)) {
-					Toast.makeText(getApplicationContext(),
-							getString(R.string.btConected), Toast.LENGTH_LONG)
-							.show();
-				}
-
-			}
-		}
-
-	}
-
+	
 }
